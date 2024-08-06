@@ -1,4 +1,4 @@
-import { Point } from "@/App";
+import { Point } from "@/components/home/home";
 import cannon_shoot from "../assets/cannon-shoot.mp3";
 import ball_hit from "../assets/object-hit.wav";
 

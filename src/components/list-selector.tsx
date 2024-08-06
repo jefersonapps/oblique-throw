@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Check, ChevronsUpDown } from "lucide-react";
 
-import { Planets } from "@/App";
 import {
   Command,
   CommandEmpty,
@@ -16,6 +15,7 @@ import {
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { Dispatch, SetStateAction, useState } from "react";
+import { Planets } from "@/contexts/global-context";
 
 const frameworks = [
   {
