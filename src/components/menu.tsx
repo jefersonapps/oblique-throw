@@ -9,10 +9,10 @@ import {
 import { IoMenu } from "react-icons/io5";
 import { Button } from "./ui/button";
 
-export const Menu = () => {
+export function Menu() {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
+      <DropdownMenuTrigger asChild>
         <Button
           size="icon"
           className="bg-background hover:bg-zinc-100 dark:hover:bg-zinc-800 text-primary"
@@ -33,4 +33,4 @@ export const Menu = () => {
       </DropdownMenuContent>
     </DropdownMenu>
   );
-};
+}

@@ -10,7 +10,7 @@ interface CustomInputProps {
   value?: number;
 }
 
-export const CustomInput = ({
+export function CustomInput({
   type,
   label,
   placeholder = "",
@@ -18,7 +18,7 @@ export const CustomInput = ({
   min,
   max,
   value,
-}: CustomInputProps) => {
+}: CustomInputProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
     if (!value) {
@@ -41,4 +41,4 @@ export const CustomInput = ({
       <label className="custom-label">{label}</label>
     </div>
   );
-};
+}
