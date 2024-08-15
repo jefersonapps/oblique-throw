@@ -19,25 +19,26 @@ export function useLaunch() {
   }
 
   function launch() {
-    if (!state.velocity || !state.angle) return;
-    if (state.velocity <= 0) return;
+    if (!state.velocity || !state.angle || state.velocity <= 0) return;
+
     state.setIsLaunching(true);
 
     let intervalId: string | number | NodeJS.Timeout | undefined;
 
-    const convertedAngle = degreeToRadians(state.angle);
+    const angleInRad = degreeToRadians(state.angle);
+
     const { trajectory } = calculateTrajectory(
-      convertedAngle,
+      angleInRad,
       state.velocity,
       state.selectedGravity
     );
+    console.log(trajectory);
 
     let i = 0;
     let previousX = 0;
     let previousY = 0;
     let previousT = 0;
 
-    //play no audio de cannon-shoot
     playShootAudio();
     intervalId = setInterval(function animate() {
       if (i < trajectory.length) {
@@ -45,13 +46,12 @@ export function useLaunch() {
         updatePosition(x, y);
 
         if (i - previousT > 5) {
-          previousT = i; // Atualiza o tempo anterior
+          previousT = i;
           const angleInRadians = Math.atan((y - previousY) / (x - previousX));
-          const angleInDegrees = angleInRadians * (180 / Math.PI);
           const trace: TraceTrajetoryDataType = {
             bottom: y,
             left: x,
-            rotation: angleInDegrees,
+            rotation: angleInRadians,
           };
           state.setTraceTrajectoryData((prev) => [...prev, trace]);
         }
@@ -60,7 +60,6 @@ export function useLaunch() {
         previousY = y;
         i++;
       } else {
-        // Finalizou
         clearInterval(intervalId);
         intervalId = undefined;
         previousT = 0;
@@ -79,7 +78,7 @@ export function useLaunch() {
         state.setIsLaunching(false);
 
         const targetStart = state.targetPosition;
-        const targetEnd = state.targetPosition + 80;
+        const targetEnd = state.targetPosition;
         const ballLastX = trajectory[trajectory.length - 1][0];
         const delta = 83 + ballLastX * state.scale + 2.5;
 

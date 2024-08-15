@@ -1,14 +1,20 @@
 import cannonTube from "../../../assets/tube.png";
 import cannonBase from "../../../assets/base.png";
 import { useGlobalContext } from "@/contexts/global-context";
+import { CANNON_DISTANCE_FROM_LEFT } from "@/constants/constants";
+import { degreeToRadians } from "@/helpers/helpersFunctions";
 
 export function Cannon() {
   const state = useGlobalContext();
   return (
     <>
       <div
-        style={{ transform: `rotate(${90 - (state.angle || 90)}deg)` }}
-        className="absolute bottom-16 left-[48px] bottom-center w-20 z-30 select-none"
+        style={{
+          transform: `rotate(${
+            Math.PI / 2 - degreeToRadians(state.angle || Math.PI / 2)
+          }rad)`,
+        }}
+        className={`absolute bottom-16 left-[${CANNON_DISTANCE_FROM_LEFT}px] bottom-center w-20 z-30 select-none`}
       >
         <div className="w-full relative">
           <img

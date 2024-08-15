@@ -85,7 +85,7 @@ export function GlobalContextProvider({ children }: { children: ReactNode }) {
   const [isLaunching, setIsLaunching] = useState(false);
   const [ballPosition, setBallPosition] = useState<BallPosition>([0, 0]);
 
-  const [scale, setScale] = useState(10);
+  const [scale, setScale] = useState(20);
 
   const [showGreeting, setShowGreeting] = useState(false);
 
@@ -98,7 +98,9 @@ export function GlobalContextProvider({ children }: { children: ReactNode }) {
 
   const selectedGravity = gravities[planetName];
 
-  const targetPosition = (range || 0) * scale + 20 + 150 / 2 - 80 / 2;
+  // const targetPosition = (range || 0) * scale + 20 + 150 / 2 - 80 / 2;
+
+  const targetPosition = range || 0;
 
   return (
     <GlobalContext.Provider

@@ -3,12 +3,16 @@ import imagemAlvo from "../../../assets/target.png";
 import { FaStar } from "react-icons/fa";
 
 import { useGlobalContext } from "@/contexts/global-context";
+import { CANNON_DISTANCE_FROM_LEFT } from "@/constants/constants";
 
 export function Target() {
   const state = useGlobalContext();
   return (
     <div
-      style={{ left: state.targetPosition + "px" }}
+      style={{
+        left:
+          CANNON_DISTANCE_FROM_LEFT + state.targetPosition * state.scale + "px",
+      }}
       className="absolute w-20 h-8 left-[132px] bottom-16 translate-y-1/2 z-10 flex items-center justify-center select-none"
     >
       <img src={imagemAlvo} alt="alvo" className="w-full h-full" />
