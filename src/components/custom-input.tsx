@@ -20,6 +20,7 @@ export function CustomInput({
   value,
 }: CustomInputProps) {
   const inputRef = useRef<HTMLInputElement>(null);
+
   useEffect(() => {
     if (!value) {
       if (inputRef.current) {
@@ -27,6 +28,19 @@ export function CustomInput({
       }
     }
   }, [value]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+
+    const normalizedValue = inputValue.replace(",", ".");
+
+    const parsedValue = parseFloat(normalizedValue);
+
+    if (!isNaN(parsedValue)) {
+      onChange(parsedValue);
+    }
+  };
+
   return (
     <div className="material-textfield">
       <input
@@ -34,7 +48,7 @@ export function CustomInput({
         placeholder={placeholder}
         ref={inputRef}
         type={type}
-        onChange={(e) => onChange(Number(e.target.value))}
+        onChange={handleChange}
         min={min}
         max={max}
       />

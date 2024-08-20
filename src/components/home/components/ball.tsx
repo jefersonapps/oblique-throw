@@ -2,6 +2,7 @@ import { useGlobalContext } from "@/contexts/global-context";
 
 export function Ball() {
   const state = useGlobalContext();
+
   return (
     <div
       style={{

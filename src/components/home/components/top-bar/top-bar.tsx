@@ -45,7 +45,9 @@ export function TopBar() {
       />
 
       <div className="flex gap-2 items-center">
-        <label className="font-bold">Gravidade:</label>
+        <label className="font-bold bg-zinc-200 dark:bg-zinc-900 px-3 py-2 rounded-md">
+          Gravidade:
+        </label>
         <ListSelector
           planetName={state.planetName}
           setPlanetName={state.setPlanetName}
@@ -63,7 +65,7 @@ export function TopBar() {
       <ModeToggle />
       <Button
         onClick={() => {
-          state.setTraceTrajectoryData([]);
+          state.setLaunchTrajectoriesData([]);
           state.setAngle(0);
           state.setVelocity(0);
           state.setRange(0);

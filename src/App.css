@@ -24,8 +24,7 @@
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  background-color: white;
-  color: gray;
+  @apply bg-card text-primary;
   padding: 0 0.3rem;
   margin: 0 0.5rem;
   transition: 0.1s ease-out;
@@ -33,21 +32,26 @@
   pointer-events: none;
   border-radius: 0.5rem;
 }
+
+.dark {
+  color-scheme: dark !important;
+}
+
 .custom-input {
   font-size: 1rem;
   outline: none;
   border: 1px solid gray;
   border-radius: 5px;
   padding: 0.5rem 0.7rem;
-  color: gray;
+  @apply bg-card text-primary;
   width: 8rem;
   transition: 0.1s ease-out;
 }
 .custom-input:focus {
-  border-color: #6200ee;
+  @apply border-primary;
 }
 .custom-input:focus + label {
-  color: #6200ee;
+  @apply text-primary;
   top: 0;
   transform: translateY(-50%) scale(0.9);
 }

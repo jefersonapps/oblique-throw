@@ -66,7 +66,7 @@ export function ListSelector({ planetName, setPlanetName }: ListSelectorProps) {
           role="combobox"
           variant="outline"
           aria-expanded={open}
-          className="w-[200px] justify-between"
+          className="w-[100px] justify-between"
         >
           {planetName
             ? frameworks.find((framework) => framework.value === planetName)
@@ -75,7 +75,7 @@ export function ListSelector({ planetName, setPlanetName }: ListSelectorProps) {
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0">
+      <PopoverContent className="w-[150px] p-0">
         <Command>
           <CommandInput placeholder="Pesquisar..." />
           <CommandEmpty>Vazio.</CommandEmpty>

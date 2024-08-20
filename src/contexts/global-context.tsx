@@ -24,11 +24,14 @@ type Point = [number, number];
 
 type AnalyticHeight = number | null;
 
-type TraceTrajetoryDataType = {
+export type TrajectoryPoint = {
   left: number;
   bottom: number;
-  rotation: number;
 };
+
+export type TrajectoryDataType = { id: string; data: Array<TrajectoryPoint> };
+
+export type LaunchTrajectoriesDataType = Array<TrajectoryDataType>;
 
 type BallPosition = [number, number];
 
@@ -45,8 +48,10 @@ interface GlobalContext {
   setMaxHeightPoint: Dispatch<SetStateAction<Point | null>>;
   maxAnalyticHeight: AnalyticHeight;
   setMaxAnalyticHeight: Dispatch<SetStateAction<AnalyticHeight>>;
-  traceTrajetoryData: TraceTrajetoryDataType[];
-  setTraceTrajectoryData: Dispatch<SetStateAction<TraceTrajetoryDataType[]>>;
+  launchTrajectoriesData: LaunchTrajectoriesDataType;
+  setLaunchTrajectoriesData: Dispatch<
+    SetStateAction<LaunchTrajectoriesDataType>
+  >;
   isLaunching: boolean;
   setIsLaunching: Dispatch<SetStateAction<boolean>>;
   ballPosition: BallPosition;
@@ -57,6 +62,8 @@ interface GlobalContext {
   setShowGreeting: Dispatch<SetStateAction<boolean>>;
   selectedGravity: number;
   targetPosition: number;
+  marginLeft: number;
+  setMarginLeft: Dispatch<SetStateAction<number>>;
 }
 
 const GlobalContext = createContext<GlobalContext>({} as GlobalContext);
@@ -71,16 +78,16 @@ export function useGlobalContext() {
 
 export function GlobalContextProvider({ children }: { children: ReactNode }) {
   const [planetName, setPlanetName] = useState<Planets>("terra");
-  const [angle, setAngle] = useState<number | undefined>(90);
-  const [velocity, setVelocity] = useState<number | undefined>(0);
-  const [range, setRange] = useState<number | undefined>(0);
+  const [angle, setAngle] = useState<Angle>(90);
+  const [velocity, setVelocity] = useState<Velocity>(0);
+  const [range, setRange] = useState<Range>(0);
   const [maxHeightPoint, setMaxHeightPoint] = useState<Point | null>(null);
   const [maxAnalyticHeight, setMaxAnalyticHeight] = useState<number | null>(
     null
   );
-  const [traceTrajetoryData, setTraceTrajectoryData] = useState<
-    TraceTrajetoryDataType[]
-  >([]);
+
+  const [launchTrajectoriesData, setLaunchTrajectoriesData] =
+    useState<LaunchTrajectoriesDataType>([]);
 
   const [isLaunching, setIsLaunching] = useState(false);
   const [ballPosition, setBallPosition] = useState<BallPosition>([0, 0]);
@@ -88,6 +95,8 @@ export function GlobalContextProvider({ children }: { children: ReactNode }) {
   const [scale, setScale] = useState(20);
 
   const [showGreeting, setShowGreeting] = useState(false);
+
+  const [marginLeft, setMarginLeft] = useState(0);
 
   const gravities = {
     terra: EARTH_GRAVITY,
@@ -97,8 +106,6 @@ export function GlobalContextProvider({ children }: { children: ReactNode }) {
   };
 
   const selectedGravity = gravities[planetName];
-
-  // const targetPosition = (range || 0) * scale + 20 + 150 / 2 - 80 / 2;
 
   const targetPosition = range || 0;
 
@@ -117,8 +124,8 @@ export function GlobalContextProvider({ children }: { children: ReactNode }) {
         setMaxHeightPoint,
         maxAnalyticHeight,
         setMaxAnalyticHeight,
-        traceTrajetoryData,
-        setTraceTrajectoryData,
+        launchTrajectoriesData,
+        setLaunchTrajectoriesData,
         isLaunching,
         setIsLaunching,
         ballPosition,
@@ -129,6 +136,8 @@ export function GlobalContextProvider({ children }: { children: ReactNode }) {
         setShowGreeting,
         selectedGravity,
         targetPosition,
+        marginLeft,
+        setMarginLeft,
       }}
     >
       {children}

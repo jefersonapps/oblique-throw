@@ -33,7 +33,6 @@ export function calculateTrajectory(
       (selectedGravity * Math.pow(x, 2)) /
         (2 * Math.pow(velocity, 2) * Math.pow(Math.cos(angle), 2));
 
-    console.log(x, y);
     if (selectedGravity === 0) {
       if (iterador >= 120) {
         break;
