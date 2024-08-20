@@ -1,11 +1,11 @@
 import { CustomInput } from "@/components/custom-input";
 import { ListSelector } from "@/components/list-selector";
-import { Menu } from "@/components/menu";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { useGlobalContext } from "@/contexts/global-context";
 import { FaEraser, FaSearchMinus, FaSearchPlus } from "react-icons/fa";
 import { useLaunch } from "./hooks/useLaunch";
+import { Menu } from "./components/menu/menu";
 
 export function TopBar() {
   const state = useGlobalContext();

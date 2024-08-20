@@ -2,12 +2,13 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { IoMenu } from "react-icons/io5";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
+import { UserCircle } from "lucide-react";
+import { HelperDialog } from "./helper-dialog";
 
 export function Menu() {
   return (
@@ -21,15 +22,19 @@ export function Menu() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuLabel>Sobre</DropdownMenuLabel>
-        <DropdownMenuSeparator />
         <a
           href="http://lattes.cnpq.br/8551968050497162"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <DropdownMenuItem>Autor</DropdownMenuItem>
+          <DropdownMenuItem className="flex items-center gap-2 text-primary w-fit">
+            <UserCircle /> Autor
+          </DropdownMenuItem>
         </a>
+
+        <DropdownMenuSeparator />
+
+        <HelperDialog />
       </DropdownMenuContent>
     </DropdownMenu>
   );
