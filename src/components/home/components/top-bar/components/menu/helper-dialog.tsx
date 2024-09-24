@@ -15,7 +15,7 @@ export function HelperDialog() {
       <DialogTrigger asChild>
         <Button
           variant="outline"
-          className="flex items-center gap-2 text-primary w-fit px-2"
+          className="flex justify-start gap-2 text-primary w-full px-2"
         >
           <HelpCircle /> Ajuda
         </Button>

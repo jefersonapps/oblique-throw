@@ -6,8 +6,13 @@ import { useGlobalContext } from "@/contexts/global-context";
 import { FaEraser, FaSearchMinus, FaSearchPlus } from "react-icons/fa";
 import { useLaunch } from "./hooks/useLaunch";
 import { Menu } from "./components/menu/menu";
+import { Dispatch, SetStateAction } from "react";
 
-export function TopBar() {
+interface TopBarProps {
+  setIndex: Dispatch<SetStateAction<number>>;
+}
+
+export function TopBar({ setIndex }: TopBarProps) {
   const state = useGlobalContext();
 
   const { launch } = useLaunch();
@@ -57,7 +62,11 @@ export function TopBar() {
       <Button
         variant="default"
         className="bg-emerald-400 hover:bg-emerald-500 text-black"
-        onClick={launch}
+        onClick={() => {
+          launch();
+
+          setIndex((prev) => prev + 1);
+        }}
         disabled={state.isLaunching}
       >
         Lançar

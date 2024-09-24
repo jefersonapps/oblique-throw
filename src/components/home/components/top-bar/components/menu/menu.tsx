@@ -9,6 +9,8 @@ import { IoMenu } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
 import { UserCircle } from "lucide-react";
 import { HelperDialog } from "./helper-dialog";
+import { ChartDialog } from "./chart-dialog";
+import { MultiPlots } from "./multi-plots";
 
 export function Menu() {
   return (
@@ -27,10 +29,14 @@ export function Menu() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <DropdownMenuItem className="flex items-center gap-2 text-primary w-fit">
+          <DropdownMenuItem className="flex items-center gap-2 text-primary w-full">
             <UserCircle /> Autor
           </DropdownMenuItem>
         </a>
+
+        <ChartDialog />
+
+        <MultiPlots />
 
         <DropdownMenuSeparator />
 

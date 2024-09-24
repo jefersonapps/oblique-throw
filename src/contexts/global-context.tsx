@@ -1,7 +1,13 @@
 import {
   EARTH_GRAVITY,
+  JUPITER_GRAVITY,
   MARS_GRAVITY,
+  MERCURY_GRAVITY,
   MOON_GRAVITY,
+  NEPTUNE_GRAVITY,
+  SATURN_GRAVITY,
+  URANUS_GRAVITY,
+  VENUS_GRAVITY,
 } from "@/constants/constants";
 import {
   createContext,
@@ -64,6 +70,10 @@ interface GlobalContext {
   targetPosition: number;
   marginLeft: number;
   setMarginLeft: Dispatch<SetStateAction<number>>;
+  chartTitle: string;
+  setChartTitle: Dispatch<SetStateAction<string>>;
+  chartColor: string;
+  setChartColor: Dispatch<SetStateAction<string>>;
 }
 
 const GlobalContext = createContext<GlobalContext>({} as GlobalContext);
@@ -98,10 +108,20 @@ export function GlobalContextProvider({ children }: { children: ReactNode }) {
 
   const [marginLeft, setMarginLeft] = useState(0);
 
+  const [chartTitle, setChartTitle] = useState("Meu gráfico");
+
+  const [chartColor, setChartColor] = useState("#6b21a8");
+
   const gravities = {
+    mercúrio: MERCURY_GRAVITY,
+    vênus: VENUS_GRAVITY,
     terra: EARTH_GRAVITY,
     lua: MOON_GRAVITY,
     marte: MARS_GRAVITY,
+    jupiter: JUPITER_GRAVITY,
+    saturno: SATURN_GRAVITY,
+    urano: URANUS_GRAVITY,
+    netuno: NEPTUNE_GRAVITY,
     vacuo: 0,
   };
 
@@ -138,6 +158,10 @@ export function GlobalContextProvider({ children }: { children: ReactNode }) {
         targetPosition,
         marginLeft,
         setMarginLeft,
+        chartTitle,
+        setChartTitle,
+        chartColor,
+        setChartColor,
       }}
     >
       {children}

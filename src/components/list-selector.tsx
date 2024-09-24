@@ -19,6 +19,14 @@ import { Planets } from "@/contexts/global-context";
 
 const frameworks = [
   {
+    value: "mercúrio",
+    label: "Mercúrio",
+  },
+  {
+    value: "vênus",
+    label: "Vênus",
+  },
+  {
     value: "terra",
     label: "Terra",
   },
@@ -29,6 +37,22 @@ const frameworks = [
   {
     value: "marte",
     label: "Marte",
+  },
+  {
+    value: "jupiter",
+    label: "Júpiter",
+  },
+  {
+    value: "saturno",
+    label: "Saturno",
+  },
+  {
+    value: "urano",
+    label: "Urano",
+  },
+  {
+    value: "netuno",
+    label: "Netuno",
   },
   {
     value: "vacuo",
@@ -94,7 +118,7 @@ export function ListSelector({ planetName, setPlanetName }: ListSelectorProps) {
                       ? "terra"
                       : currValue
                   );
-                  console.log(currValue);
+
                   setOpen(false);
                 }}
               >

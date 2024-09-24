@@ -1,5 +1,11 @@
+export const MERCURY_GRAVITY = 3.7;
+export const VENUS_GRAVITY = 8.87;
 export const EARTH_GRAVITY = 9.81;
 export const MOON_GRAVITY = 1.62;
 export const MARS_GRAVITY = 3.71;
+export const JUPITER_GRAVITY = 24.79;
+export const SATURN_GRAVITY = 10.44;
+export const URANUS_GRAVITY = 8.87;
+export const NEPTUNE_GRAVITY = 11.15;
 export const DISTANCE_BETWEEN_SCREEN_BOTTOM_AND_TARGET = 80;
 export const CANNON_DISTANCE_FROM_LEFT = 48;
